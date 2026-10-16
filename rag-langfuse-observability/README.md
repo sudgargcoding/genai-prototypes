@@ -1,8 +1,8 @@
-# integrate_langfuse_observability
+# rag-langfuse-observability
 
 A small but complete **RAG pipeline over your own Markdown files**, with every LLM call traced in [Langfuse](https://langfuse.com). It shows what the pipeline sends to the model, what comes back, and how long it takes, so you can see where a bad answer came from.
 
-Part of the [prototyping](../README.md) repository: quick, console-driven scripts for validating RAG and other GenAI concepts. It is exploratory code, not production software.
+Part of the [genai-prototypes](../README.md) repository: quick, console-driven scripts for validating RAG and other GenAI concepts. It is exploratory code, not production software.
 
 ## What it validates
 
@@ -63,7 +63,7 @@ question → rewrite → expand → semantic + keyword search → distance filte
 ## Setup
 
 ```bash
-cd integrate_langfuse_observability
+cd rag-langfuse-observability
 python3.13 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt     # chromadb, tiktoken, langchain-aws, langfuse, boto3
@@ -87,7 +87,7 @@ export LANGFUSE_SECRET_KEY="sk-lf-..."
 export LANGFUSE_BASE_URL="https://cloud.langfuse.com"   # default, change for self-hosted or another region
 ```
 
-Where your documents and vectors live is set by two plain paths in `config.py`: `DOCS_DIR` (default `../my_docs`) and `VECTORS_DIR` (default `../my_vectors`). Both resolve to folders next to this one, in `prototyping/`. Create `my_docs/` and add your Markdown files, or edit the paths.
+Where your documents and vectors live is set by two plain paths in `config.py`: `DOCS_DIR` (default `../my_docs`) and `VECTORS_DIR` (default `../my_vectors`). Both resolve to folders next to this one, in `genai-prototypes/`. Create `my_docs/` and add your Markdown files, or edit the paths.
 
 Notes:
 - Model availability differs by region. If a call fails with an access or "model not found" error, enable the model in the Bedrock console for that region.

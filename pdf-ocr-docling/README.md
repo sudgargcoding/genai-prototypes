@@ -1,8 +1,8 @@
-# ocr_docling
+# pdf-ocr-docling
 
 Reads a **PDF with OCR using [Docling](https://github.com/docling-project/docling)** and writes it out as **Markdown**, page by page. Charts, graphs and maps are described afterwards by a vision-capable Bedrock chat model. Anything that can't be read is flagged explicitly instead of being guessed.
 
-Part of the [prototyping](../README.md) repository: quick, console-driven scripts for validating RAG and other GenAI concepts. It is exploratory code, not production software.
+Part of the [genai-prototypes](../README.md) repository: quick, console-driven scripts for validating RAG and other GenAI concepts. It is exploratory code, not production software.
 
 ## What it validates
 
@@ -50,7 +50,7 @@ PDF → Docling (OCR + layout + picture classification) → page text
 This prototype has no `requirements.txt`. Install the packages it imports:
 
 ```bash
-cd ocr_docling
+cd pdf-ocr-docling
 python3.13 -m venv .venv
 source .venv/bin/activate
 pip install docling docling-core boto3 truststore

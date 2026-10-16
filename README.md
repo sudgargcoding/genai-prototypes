@@ -1,8 +1,8 @@
-# prototyping
+# genai-prototypes
 
 Small, quick-to-run code prototypes for validating **RAG (Retrieval-Augmented Generation)** and other modern GenAI and architecture concepts hands-on.
 
-The articles in my [docs](https://github.com/sudgargcoding/docs) repository discuss these ideas. This repository is where I try them out in code, before or while writing about them. The goal is a fast answer to "does this actually work, and how?", not production-ready software.
+The articles in my [technical-writeups](https://github.com/sudgargcoding/technical-writeups) repository discuss these ideas. This repository is where I try them out in code, before or while writing about them. The goal is a fast answer to "does this actually work, and how?", not production-ready software.
 
 > **Work in progress.** Prototypes are added as I explore new ideas, so the collection will keep growing.
 
@@ -12,9 +12,9 @@ Each prototype lives in its own folder with a README that covers what it validat
 
 | Prototype | What it validates |
 |-----------|-------------------|
-| [`rag_pipeline`](rag_pipeline/README.md) | A baseline RAG pipeline over local Markdown files: sentence-based chunking, embeddings in ChromaDB, cosine-similarity kNN retrieval with query rewriting, expansion and keyword matching, and grounded answers that flag conflicts or refuse. Companion to the article [0 → 1 with RAG](https://github.com/sudgargcoding/docs/blob/main/0to1withRAG/article.md). |
-| [`integrate_langfuse_observability`](integrate_langfuse_observability/README.md) | An end-to-end RAG pipeline over local Markdown files (the `rag_pipeline` approach) with LLM calls traced in **Langfuse**. |
-| [`ocr_docling`](ocr_docling/README.md) | Reading PDFs, including scanned pages and charts, with **Docling** OCR and writing Markdown. Charts are described by a Bedrock chat model, and anything unreadable is flagged explicitly. |
+| [`rag-pipeline`](rag-pipeline/README.md) | A baseline RAG pipeline over local Markdown files: sentence-based chunking, embeddings in ChromaDB, cosine-similarity kNN retrieval with query rewriting, expansion and keyword matching, and grounded answers that flag conflicts or refuse. Companion to the article [0 → 1 with RAG](https://github.com/sudgargcoding/technical-writeups/blob/main/rag-zero-to-one/article.md). |
+| [`rag-langfuse-observability`](rag-langfuse-observability/README.md) | An end-to-end RAG pipeline over local Markdown files (the `rag-pipeline` approach) with LLM calls traced in **Langfuse**. |
+| [`pdf-ocr-docling`](pdf-ocr-docling/README.md) | Reading PDFs, including scanned pages and charts, with **Docling** OCR and writing Markdown. Charts are described by a Bedrock chat model, and anything unreadable is flagged explicitly. |
 
 ## How the repository is organised
 
@@ -24,10 +24,10 @@ Each prototype lives in its own folder with a README that covers what it validat
 - **Exploratory quality.** Error handling is minimal, and the focus is on validating concepts rather than hardening them. Don't deploy these as they are.
 
 ```
-prototyping/
-├── rag_pipeline/                       # baseline RAG: sentence chunks, cosine kNN, grounded answers
-├── integrate_langfuse_observability/   # the same RAG pipeline with Langfuse observability
-├── ocr_docling/                        # PDF OCR to Markdown with Docling
+genai-prototypes/
+├── rag-pipeline/                 # baseline RAG: sentence chunks, cosine kNN, grounded answers
+├── rag-langfuse-observability/   # the same RAG pipeline with Langfuse observability
+├── pdf-ocr-docling/              # PDF OCR to Markdown with Docling
 └── README.md
 ```
 
@@ -42,8 +42,8 @@ Details differ per prototype, so check each folder's README. What they share:
 - Typical topics include RAG building blocks (chunking, embeddings, vector search, retrieval and reranking, grounded answer generation, evaluation, observability) and other emerging GenAI patterns.
 
 ```bash
-git clone git@github.com:sudgargcoding/prototyping.git
-cd prototyping/<prototype-folder>
+git clone git@github.com:sudgargcoding/genai-prototypes.git
+cd genai-prototypes/<prototype-folder>
 python3.13 -m venv .venv && source .venv/bin/activate
 # then follow that folder's README
 ```
@@ -56,7 +56,7 @@ python3.13 -m venv .venv && source .venv/bin/activate
 
 ## Related
 
-- [docs](https://github.com/sudgargcoding/docs): the articles these experiments accompany, including *0 → 1 with RAG*.
+- [technical-writeups](https://github.com/sudgargcoding/technical-writeups): the articles these experiments accompany, including *0 → 1 with RAG*.
 
 ## Feedback
 

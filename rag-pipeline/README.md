@@ -1,12 +1,12 @@
-# rag_pipeline
+# rag-pipeline
 
 A compact, readable **RAG (Retrieval-Augmented Generation) pipeline over your own Markdown files**. It ingests documents into a local vector store using **sentence-based chunks** and Bedrock embeddings. It retrieves with **cosine similarity and k-nearest-neighbour (kNN) search**, and answers only from what it retrieved, refusing when the context doesn't cover the question.
 
-Part of the [prototyping](../README.md) repository: quick, console-driven scripts for validating RAG and other GenAI concepts. It is exploratory code, not production software.
+Part of the [genai-prototypes](../README.md) repository: quick, console-driven scripts for validating RAG and other GenAI concepts. It is exploratory code, not production software.
 
-> **Background reading:** this prototype is the hands-on companion to the article **[0 → 1 with RAG](https://github.com/sudgargcoding/docs/blob/main/0to1withRAG/article.md)** in the [docs](https://github.com/sudgargcoding/docs) repository. The article explains the terminology, the building blocks, safety and governance, evaluation metrics and failure scenarios. This code lets you try the ideas.
+> **Background reading:** this prototype is the hands-on companion to the article **[0 → 1 with RAG](https://github.com/sudgargcoding/technical-writeups/blob/main/rag-zero-to-one/article.md)** in the [technical-writeups](https://github.com/sudgargcoding/technical-writeups) repository. The article explains the terminology, the building blocks, safety and governance, evaluation metrics and failure scenarios. This code lets you try the ideas.
 
-For the same pipeline with LLM tracing added, see [`integrate_langfuse_observability`](../integrate_langfuse_observability/README.md).
+For the same pipeline with LLM tracing added, see [`rag-langfuse-observability`](../rag-langfuse-observability/README.md).
 
 ## What it validates
 
@@ -17,7 +17,7 @@ For the same pipeline with LLM tracing added, see [`integrate_langfuse_observabi
 
 ## Key concepts
 
-These match the terms in the [0 → 1 with RAG](https://github.com/sudgargcoding/docs/blob/main/0to1withRAG/article.md) article.
+These match the terms in the [0 → 1 with RAG](https://github.com/sudgargcoding/technical-writeups/blob/main/rag-zero-to-one/article.md) article.
 
 | Concept | How this prototype uses it |
 |---------|----------------------------|
@@ -68,12 +68,12 @@ Query:   question → rewrite → expand → embed → kNN (cosine) + keyword �
 | Python **3.13** | The version the prototype is developed with |
 | AWS account with **Amazon Bedrock** access | Model access enabled for your chat and embedding models in your chosen region |
 | AWS credentials | Configured locally, for example `aws configure` or `aws sso login`, or via environment variables |
-| Some Markdown files | Anything you'd like to ask questions about. The articles in the [docs](https://github.com/sudgargcoding/docs) repository make a good test set |
+| Some Markdown files | Anything you'd like to ask questions about. The articles in the [technical-writeups](https://github.com/sudgargcoding/technical-writeups) repository make a good test set |
 
 ## Setup
 
 ```bash
-cd rag_pipeline
+cd rag-pipeline
 python3.13 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -89,7 +89,7 @@ export CHAT_MODEL="<your-chat-model-id>"            # model or inference profile
 export EMBED_MODEL="amazon.titan-embed-text-v2:0"   # model for embeddings
 ```
 
-Where your documents and vectors live is set by two plain paths in `config.py`: `DOCS_DIR` (default `../my_docs`) and `VECTORS_DIR` (default `../my_vectors`). Both resolve to folders next to this one, in `prototyping/`. Create `my_docs/` and add your Markdown files, or edit the paths.
+Where your documents and vectors live is set by two plain paths in `config.py`: `DOCS_DIR` (default `../my_docs`) and `VECTORS_DIR` (default `../my_vectors`). Both resolve to folders next to this one, in `genai-prototypes/`. Create `my_docs/` and add your Markdown files, or edit the paths.
 
 Notes:
 - Model availability differs by region. If a call fails with an access or "model not found" error, enable the model in the Bedrock console for that region.
@@ -142,7 +142,7 @@ All of these can be set through environment variables. `DOCS_DIR` and `VECTORS_D
 
 ## Experiments to try
 
-These connect to the "common failure scenarios" and evaluation sections of the [article](https://github.com/sudgargcoding/docs/blob/main/0to1withRAG/article.md).
+These connect to the "common failure scenarios" and evaluation sections of the [article](https://github.com/sudgargcoding/technical-writeups/blob/main/rag-zero-to-one/article.md).
 
 - Change `--chunk-size` and `--chunk-overlap`, re-ingest with `--reset`, and compare the retrieved chunks.
 - Lower and raise `DISTANCE_THRESHOLD` to see the trade-off between missing relevant context and letting in noise.
