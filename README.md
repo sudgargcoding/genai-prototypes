@@ -12,7 +12,8 @@ Each prototype lives in its own folder with a README that covers what it validat
 
 | Prototype | What it validates |
 |-----------|-------------------|
-| [`integrate_langfuse_observability`](integrate_langfuse_observability/README.md) | An end-to-end RAG pipeline over local Markdown files (sentence-level ingestion into ChromaDB, query rewriting and expansion, hybrid retrieval, grounded answers that cite conflicts or refuse), with LLM calls traced in **Langfuse**. |
+| [`rag_pipeline`](rag_pipeline/README.md) | A baseline RAG pipeline over local Markdown files: sentence-based chunking, embeddings in ChromaDB, cosine-similarity kNN retrieval with query rewriting, expansion and keyword matching, and grounded answers that flag conflicts or refuse. Companion to the article [0 → 1 with RAG](https://github.com/sudgargcoding/docs/blob/main/0to1withRAG/article.md). |
+| [`integrate_langfuse_observability`](integrate_langfuse_observability/README.md) | An end-to-end RAG pipeline over local Markdown files (the `rag_pipeline` approach) with LLM calls traced in **Langfuse**. |
 | [`ocr_docling`](ocr_docling/README.md) | Reading PDFs, including scanned pages and charts, with **Docling** OCR and writing Markdown. Charts are described by a Bedrock chat model, and anything unreadable is flagged explicitly. |
 
 ## How the repository is organised
@@ -24,7 +25,8 @@ Each prototype lives in its own folder with a README that covers what it validat
 
 ```
 prototyping/
-├── integrate_langfuse_observability/   # RAG + Langfuse observability
+├── rag_pipeline/                       # baseline RAG: sentence chunks, cosine kNN, grounded answers
+├── integrate_langfuse_observability/   # the same RAG pipeline with Langfuse observability
 ├── ocr_docling/                        # PDF OCR to Markdown with Docling
 └── README.md
 ```

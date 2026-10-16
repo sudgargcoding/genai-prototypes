@@ -6,7 +6,7 @@ Pipeline:
     No LLM is used inside docling itself.
   • Page text (including OCR'd text from images) is written page-by-page.
   • Charts/graphs/maps detected by docling are described AFTER docling, by
-    sending the picture image to the Llama (Bedrock) chat model.
+    sending the picture image to the chat model.
   • Anything that cannot be read — empty pages, undescribable images,
     non-chart images — is flagged explicitly as "Unable to read this part".
 
@@ -73,7 +73,7 @@ def _docling_converter() -> DocumentConverter:
 
 
 # ---------------------------------------------------------------------------
-# Llama (Bedrock) — used AFTER docling for chart description only
+# used AFTER docling for chart description only
 # ---------------------------------------------------------------------------
 
 def _bedrock_client():
@@ -81,7 +81,7 @@ def _bedrock_client():
 
 
 def _describe_chart(image_bytes: bytes) -> str:
-    """Ask Llama to describe a chart/graph image. Empty string on failure."""
+    """Ask chat model to describe a chart/graph image. Empty string on failure."""
     prompt = (
         "You are reading a chart from a financial publication. Be PRECISE.\n\n"
         "For any numeric values (axis ranges, band boundaries, data points):\n"
@@ -244,7 +244,7 @@ def read_pdf(pdf_path: Path) -> str:
 def main():
     parser = argparse.ArgumentParser(
         description="Read a theme PDF using docling (with OCR) and write a Markdown file. "
-                    "Charts/graphs are described via Llama (post-docling). "
+                    "Charts/graphs are described via Llm (post-docling). "
                     "Unreadable sections are flagged explicitly."
     )
     parser.add_argument("--pdf",    required=True, help="Path to the theme PDF (absolute or relative).")

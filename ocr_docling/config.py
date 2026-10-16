@@ -11,6 +11,6 @@ DOCLING_MODELS_PATH = os.path.expanduser(
     os.getenv("DOCLING_MODELS_PATH", os.path.join(SPIKE_DIR, ".docling-models"))
 )
 
-# AWS Bedrock — Llama as chat model
+# AWS Bedrock and chat model
 BEDROCK_REGION = ""
 CHAT_MODEL     = ""

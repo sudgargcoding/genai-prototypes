@@ -203,11 +203,11 @@ def generate_answer(query: str, hits: list[dict], chat_model: str) -> str:
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Search the local vector store and get an answer from Llama4.")
+    parser = argparse.ArgumentParser(description="Search the local vector store and get an answer from Llm.")
     parser.add_argument("query",              help="The question or search query")
     parser.add_argument("--vectors-dir",      default=config.VECTORS_DIR,     help="Directory where ChromaDB is stored")
-    parser.add_argument("--embed-model",      default=config.EMBED_MODEL,     help="Ollama model for query embedding")
-    parser.add_argument("--chat-model",       default=config.CHAT_MODEL,      help="Ollama model for answer generation")
+    parser.add_argument("--embed-model",      default=config.EMBED_MODEL,     help="model for query embedding")
+    parser.add_argument("--chat-model",       default=config.CHAT_MODEL,      help="model for answer generation")
     parser.add_argument("--collection",       default=config.COLLECTION_NAME, help="ChromaDB collection name")
     parser.add_argument("--top-k",            default=10, type=int,            help="Number of chunks to retrieve")
     parser.add_argument("--no-generate",      action="store_true",            help="Only show retrieved chunks, skip answer generation")

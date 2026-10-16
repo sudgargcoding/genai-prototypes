@@ -148,6 +148,5 @@ All of these can be set through environment variables. `DOCS_DIR` and `VECTORS_D
 
 ## Known limitations
 
-- The `--help` text in the scripts still mentions Ollama and Llama4, left over from an earlier version. The code uses Bedrock.
 - `requirements.txt` pins `langfuse>=2.0`, but the code needs the v3 SDK. Use `langfuse>=3`.
 - Retrieval quality depends heavily on the prompts and the `DISTANCE_THRESHOLD`, which are not tuned or evaluated here.

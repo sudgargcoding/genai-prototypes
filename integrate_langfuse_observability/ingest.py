@@ -249,10 +249,10 @@ def ingest(docs_dir: str, vectors_dir: str, embed_model: str,
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Ingest markdown docs into a local ChromaDB vector store using Llama4.")
+    parser = argparse.ArgumentParser(description="Ingest markdown docs into a local ChromaDB vector store.")
     parser.add_argument("--docs-dir",         default=config.DOCS_DIR,        help="Directory containing markdown files")
     parser.add_argument("--vectors-dir",      default=config.VECTORS_DIR,     help="Directory to persist ChromaDB")
-    parser.add_argument("--embed-model",      default=config.EMBED_MODEL,     help="Ollama model for embeddings (default: llama4)")
+    parser.add_argument("--embed-model",      default=config.EMBED_MODEL,     help="model for embeddings")
     parser.add_argument("--chunk-size",       default=config.CHUNK_SIZE,      type=int, help="Tokens per chunk")
     parser.add_argument("--chunk-overlap",    default=config.CHUNK_OVERLAP,   type=int, help="Number of sentences to overlap between chunks")
     parser.add_argument("--collection",       default=config.COLLECTION_NAME, help="ChromaDB collection name")
